@@ -121,7 +121,7 @@ namespace BangazonAPI.Controllers
 
         // PUT: api/PaymentTypes/5
         [HttpPut("{id}")]
-        public void Put([FromRoute] int id, [FromBody] PaymentType paymentType)
+        public async Task <IActionResult> Put([FromRoute] int id, [FromBody] PaymentType paymentType)
         {
             using (SqlConnection conn = Connection)
             {
@@ -137,6 +137,7 @@ namespace BangazonAPI.Controllers
                     cmd.Parameters.Add(new SqlParameter("@id", id));
 
                     cmd.ExecuteNonQuery();
+                    return NoContent();
 
                 }
             }

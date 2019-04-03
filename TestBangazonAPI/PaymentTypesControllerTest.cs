@@ -99,7 +99,7 @@ namespace TestBangazonAPI
             using (var client = new APIClientProvider().Client)
             {
                 // ARRANGE
-                string newName = "MasterKard";
+                string newName = "MasterCard";
 
                 PaymentType modifiedType = new PaymentType
                 {
