@@ -19,12 +19,8 @@
     },
     "BangazonAPI": {
       "commandName": "Project",
-<<<<<<< HEAD
       "launchBrowser": true,
       "launchUrl": "api/employees",
-=======
-      "launchUrl": "api/values",
->>>>>>> master
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
