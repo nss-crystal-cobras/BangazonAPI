@@ -24,10 +24,10 @@ namespace BangazonAPI.Models
             [Required]
             public bool IsSupervisor { get; set; }
 
-            [Required]
+            
             public Department Department { get; set; }
 
-            [Required]
+            
             public Computer Computer { get; set; }
 
 

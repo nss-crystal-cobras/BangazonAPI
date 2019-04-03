@@ -170,23 +170,20 @@ namespace BangazonAPI.Controllers
 
         // PUT: api/Employees/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Employee employee)
+        public void Put(int id, [FromBody] Employee newEmployee)
         {
             using (SqlConnection conn = Connection)
             {
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"UPDATE instructor 
-                                           SET firstname = @firstname, 
-                                               lastname = @lastname,
-                                               slackhandle = @slackhandle, 
-                                               cohortid = @cohortid
-                                         WHERE id = @id;";
-                    cmd.Parameters.Add(new SqlParameter("@firstname", employee.FirstName));
-                    cmd.Parameters.Add(new SqlParameter("@lastname", employee.LastName));
-                    cmd.Parameters.Add(new SqlParameter("@slackhandle", employee.SlackHandle));
-                    cmd.Parameters.Add(new SqlParameter("@cohortid", employee.CohortId));
+                    cmd.CommandText = @"INSERT INTO employee (firstname, lastname, departmentId, isSupervisor)
+                                             OUTPUT INSERTED.Id
+                                             VALUES (@firstname, @lastname, @departmentId, @isSupervisor)";
+                    cmd.Parameters.Add(new SqlParameter("@firstname", newEmployee.FirstName));
+                    cmd.Parameters.Add(new SqlParameter("@lastname", newEmployee.LastName));
+                    cmd.Parameters.Add(new SqlParameter("@departmentId", newEmployee.DepartmentId));
+                    cmd.Parameters.Add(new SqlParameter("@isSupervisor", newEmployee.IsSupervisor));
                     cmd.Parameters.Add(new SqlParameter("@id", id));
 
                     cmd.ExecuteNonQuery();
