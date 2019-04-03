@@ -127,7 +127,7 @@ namespace TestBangazonAPI
             using (HttpClient client = new APIClientProvider().Client)
             {
 
-                HttpResponseMessage response = await client.DeleteAsync("/api/ProductTypes/9");
+                HttpResponseMessage response = await client.DeleteAsync("/api/ProductTypes/11");
 
 
                 string responseBody = await response.Content.ReadAsStringAsync();
@@ -136,7 +136,7 @@ namespace TestBangazonAPI
                 /*
                     ASSERT
                 */
-                Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+                Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
 
             }
 
