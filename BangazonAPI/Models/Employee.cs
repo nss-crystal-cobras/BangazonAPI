@@ -30,9 +30,6 @@ namespace BangazonAPI.Models
             [Required]
             public Computer Computer { get; set; }
 
-           public List<Department> Departments { get; set; } = new List<Department>();
-           public List<Computer> Computers { get; set; } = new List<Computer>();
-
 
     }
 }
