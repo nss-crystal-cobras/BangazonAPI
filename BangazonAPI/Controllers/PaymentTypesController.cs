@@ -10,11 +10,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace BangazonAPI.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController]
     public class PaymentTypesController : ControllerBase
-    {    
+    {
         private readonly IConfiguration configuration;
 
         public PaymentTypesController(IConfiguration configuration)
@@ -29,7 +29,7 @@ namespace BangazonAPI.Controllers
                 return new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
             }
         }
-    
+
         // GET: api/PaymentTypes
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -142,7 +142,7 @@ namespace BangazonAPI.Controllers
                 }
             }
         }
-            
+
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)
