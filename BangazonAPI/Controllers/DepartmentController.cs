@@ -13,6 +13,20 @@ namespace BangazonAPI.Controllers
     [ApiController]
     public class DepartmentController : ControllerBase
     {
+        private readonly IConfiguration _config;
+
+        public ProductTypesController(IConfiguration config)
+        {
+            _config = config;
+        }
+
+        public SqlConnection Connection
+        {
+            get
+            {
+                return new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            }
+        }
         // GET: api/Department
         [HttpGet]
         public IEnumerable<string> Get()
