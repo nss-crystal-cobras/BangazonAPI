@@ -95,11 +95,11 @@ namespace TestBangazonAPI
         public async Task Test_Put_PaymentTypes()
         {
 
-            string newName = "MasterKard";
 
             using (var client = new APIClientProvider().Client)
             {
                 // ARRANGE
+                string newName = "MasterKard";
 
                 PaymentType modifiedType = new PaymentType
                 {
