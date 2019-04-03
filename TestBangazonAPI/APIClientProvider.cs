@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net.Http;
 using Xunit;
-using __YOUR WEB API PROJECT NAMESPACE__;
+using BangazonAPI;
 
-namespace __YOUR TEST PROJECT NAMESPACE__
+namespace TestBangazonAPI
 {
     class APIClientProvider : IClassFixture<WebApplicationFactory<Startup>>
 {
