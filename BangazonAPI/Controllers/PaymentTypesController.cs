@@ -32,7 +32,7 @@ namespace BangazonAPI.Controllers
 
         // GET: api/PaymentTypes
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
             using (SqlConnection conn = Connection)
             {
@@ -65,7 +65,7 @@ namespace BangazonAPI.Controllers
         }
         // GET: api/PaymentTypes/5
         [HttpGet("{id}", Name = "GetPaymentType")]
-        public async Task<IActionResult> Get([FromRoute] int id)
+        public IActionResult Get([FromRoute] int id)
         {
             using (SqlConnection conn = Connection)
             {
@@ -98,7 +98,7 @@ namespace BangazonAPI.Controllers
 
         // POST: api/PaymentTypes
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] PaymentType paymentType)
+        public IActionResult Post([FromBody] PaymentType paymentType)
         {
             using (SqlConnection conn = Connection)
             {
@@ -121,7 +121,7 @@ namespace BangazonAPI.Controllers
 
         // PUT: api/PaymentTypes/5
         [HttpPut("{id}")]
-        public async Task <IActionResult> Put([FromRoute] int id, [FromBody] PaymentType paymentType)
+        public IActionResult Put([FromRoute] int id, [FromBody] PaymentType paymentType)
         {
             using (SqlConnection conn = Connection)
             {
