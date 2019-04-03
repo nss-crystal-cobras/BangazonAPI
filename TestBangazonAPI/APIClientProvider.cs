@@ -17,9 +17,9 @@ namespace TestBangazonAPI
 
         public void Dispose()
         {
-
             _factory?.Dispose();
             Client?.Dispose();
         }
     }
 }
+
