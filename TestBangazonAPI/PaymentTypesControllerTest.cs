@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using TestBangazonAPI.Test;
+using TestBangazonAPI;
 using Xunit;
 
 namespace TestBangazonAPI
@@ -60,7 +60,7 @@ namespace TestBangazonAPI
             }
         }
         // ----------POST for Payment Types---------
-        /*
+        
         [Fact]
         public async Task Test_Post_PaymentTypes()
         {
@@ -89,7 +89,7 @@ namespace TestBangazonAPI
                 Assert.Equal("VenmoCard", newPaymentType.Name);
             }
         }
-        */
+        
         // ----------PUT for Payment Types---------
         [Fact]
         public async Task Test_Put_PaymentTypes()
@@ -131,20 +131,24 @@ namespace TestBangazonAPI
             }
         }
 
-        /*
+        
                 // ----------DELETE for Payment Types---------
         [Fact]
         public async Task Test_Delete_PaymentTypes()
         {
+
             using (var client = new APIClientProvider().Client)
             {
-                // ARRANGE
+                var response = await client.DeleteAsync("/api/paymenttypes/2");
 
-                // ACT
+                string responseBody = await response.Content.ReadAsStringAsync();
+                var deletePayment = JsonConvert.DeserializeObject<PaymentType>(responseBody);
 
-                // ASSERT
+                /*
+                    ASSERT
+                */
+                Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             }
         }
-        */
     }
 }

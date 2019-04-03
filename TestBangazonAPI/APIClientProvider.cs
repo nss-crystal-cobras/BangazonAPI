@@ -17,16 +17,9 @@ namespace TestBangazonAPI
 
         public void Dispose()
         {
-<<<<<<< HEAD
-=======
-
->>>>>>> master
             _factory?.Dispose();
             Client?.Dispose();
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
+
