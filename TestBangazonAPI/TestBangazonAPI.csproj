@@ -17,12 +17,11 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
    
   </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\BangazonAPI\BangazonAPI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BangazonAPI\BangazonAPI.csproj" />
-  </ItemGroup>
+  
   
 </Project>
