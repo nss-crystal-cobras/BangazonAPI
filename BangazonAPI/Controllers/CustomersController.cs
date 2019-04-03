@@ -101,7 +101,7 @@ namespace BangazonAPI.Controllers
             }
         }
 
-        // POST: api/Customers
+        // POST:
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Customer customer)
         {
@@ -126,7 +126,7 @@ namespace BangazonAPI.Controllers
             }
         }
 
-        // PUT: api/Customers/5
+        // PUT: 
         [HttpPut("{id}")]
         public async Task<IActionResult> Put([FromRoute] int id, [FromBody] Customer customer)
         {
@@ -150,10 +150,7 @@ namespace BangazonAPI.Controllers
                 }
             }
         
-           
-        
-
-        // DELETE: api/ApiWithActions/5
+        // DELETE: 
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
