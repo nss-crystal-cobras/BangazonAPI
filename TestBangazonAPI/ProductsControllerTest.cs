@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using TestBangazonAPI;
 using Xunit;
 
+
+
 namespace TestBangazonAPI
 {
     public class ProductsControllerTest
@@ -59,7 +61,7 @@ namespace TestBangazonAPI
                 Assert.True(product.Id == 1);
             }
         }
-        // ----------POST for Payment Types---------
+        // ----------POST for Products---------
 
         [Fact]
         public async Task Test_Post_Products()
@@ -137,22 +139,67 @@ namespace TestBangazonAPI
 
 
         // ----------DELETE  Product---------
-        [Fact]
-        public async Task Test_Delete_Product()
+        /* [Fact]
+         public async Task Test_Delete_Product()
+         {
+
+             using (var client = new APIClientProvider().Client)
+             {
+                 var response = await client.DeleteAsync("/api/products/2");
+
+                 string responseBody = await response.Content.ReadAsStringAsync();
+                 var deleteProduct = JsonConvert.DeserializeObject<Product>(responseBody);
+
+                 /*
+                     ASSERT
+
+                 Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+             }
+         }*/
+
+
+        /*this one heavily modeled after Russells team
+    [Fact]
+    public async Task Test_Remove_Product()
+    {
+        using (var client = new APIClientProvider().Client)
+        {
+            var productGetInitialResponse = await client.GetAsync("api/products");
+            string initialResponseBody = await productGetInitialResponse.Content.ReadAsStringAsync();
+            var productList = JsonConvert.DeserializeObject<List<Product>>(initialResponseBody);
+            Assert.Equal(HttpStatusCode.OK, productGetInitialResponse.StatusCode);
+            int removeLastObject = productList.Count - 1;
+            var productObject = productList[removeLastObject];
+
+            var response = await client.DeleteAsync($"api/products/{productObject.Id}");
+
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            var getProduct = await client.GetAsync($"api/products/{productObject.Id}");
+            getProduct.EnsureSuccessStatusCode();
+
+            string getProductBody = await getProduct.Content.ReadAsStringAsync();
+            Product newProduct = JsonConvert.DeserializeObject<Product>(getProductBody);
+
+            Assert.Equal(HttpStatusCode.NoContent, getProduct.StatusCode);
+        }
+    }*/
+
+
+        /*This one from Cole B*/
+        public async Task Test_Remove_Product()
         {
 
             using (var client = new APIClientProvider().Client)
             {
-                var response = await client.DeleteAsync("/api/products/2");
+                var response = await client.DeleteAsync("/api/product/3");
 
-                string responseBody = await response.Content.ReadAsStringAsync();
-                var deleteProduct = JsonConvert.DeserializeObject<Product>(responseBody);
-
-                /*
-                    ASSERT
-                */
-                Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+                Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
             }
         }
+
+
     }
 }
