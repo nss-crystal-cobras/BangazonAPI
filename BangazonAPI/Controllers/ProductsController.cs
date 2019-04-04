@@ -151,7 +151,7 @@ namespace BangazonAPI.Controllers
         // PUT: api/Products/5
 
 
-        /*
+        
                 [HttpPut("{id}")]
                 public void Put(int id, [FromBody] Product product)
                 {
@@ -180,7 +180,7 @@ namespace BangazonAPI.Controllers
                         }
                     }
                 }
-                */
+                
 
         // DELETE: api/ApiWithActions/5
         // Test Failed, here are details:
