@@ -30,7 +30,11 @@ namespace BangazonAPI.Models
             
             public Computer Computer { get; set; }
 
-      
+
+            public int? ComputerId { get; set; }
+
+
+
 
 
     }

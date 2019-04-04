@@ -43,7 +43,7 @@ namespace BangazonAPI.Controllers
                                           FROM Employee e 
                                                left join Department d on e.departmentId = d.id
                                                left join ComputerEmployee ec on e.id = ec.EmployeeId
-                                               left join Computer c on c.id = ec.ComputerId;";
+                                               left join Computer c on c.id = ec.computerId;";
 
                    
                    SqlDataReader reader = cmd.ExecuteReader();
@@ -51,6 +51,7 @@ namespace BangazonAPI.Controllers
                     List<Employee> employees = new List<Employee>();
                     while (reader.Read())
                     {
+
                         Employee employee = new Employee()
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("id")),
@@ -62,17 +63,25 @@ namespace BangazonAPI.Controllers
                                 Id = reader.GetInt32(reader.GetOrdinal("departmentId")),
                                 Name = reader.GetString(reader.GetOrdinal("departmentName")),
                                 Budget = reader.GetInt32(reader.GetOrdinal("departmentBudget"))
-                            },
-                            Computer = new Computer
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("computerId")),
-                                Make = reader.GetString(reader.GetOrdinal("computerMake")),
-                                Manufacturer = reader.GetString(reader.GetOrdinal("computerManufacturer"))
                             }
                         };
 
+                        if (!reader.IsDBNull(reader.GetOrdinal("computerId")))
+                            {
+                            employee.ComputerId = reader.GetInt32(reader.GetOrdinal("computerId"));
+                            employee.Computer = new Computer
+                            {
+                            Id = reader.GetInt32(reader.GetOrdinal("computerId")),
+                            Make = reader.GetString(reader.GetOrdinal("computerMake")),
+                            Manufacturer = reader.GetString(reader.GetOrdinal("computerManufacturer"))
+                        };
+
+                        }
                         employees.Add(employee);
-                    }
+                    };
+
+                        
+                    
                
                     reader.Close();
                     
