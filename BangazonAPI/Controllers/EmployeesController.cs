@@ -75,14 +75,10 @@ namespace BangazonAPI.Controllers
                     }
                
                     reader.Close();
-                    if (employees.Count == 0)
-                    {
-                        return NoContent();
-                    }
-                    else
-                    {
+                    
+                    
                         return Ok(employees);
-                    }
+                    
                 }
             }
         }

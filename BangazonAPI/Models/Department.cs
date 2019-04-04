@@ -12,6 +12,7 @@ namespace BangazonAPI.Models
 
             [StringLength(50, MinimumLength = 2)]
             public String Name { get; set; }
+
             public int Budget { get; set; }
     }
 }
