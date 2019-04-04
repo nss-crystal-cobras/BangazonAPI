@@ -128,7 +128,7 @@ namespace TestBangazonAPI
             using (HttpClient client = new APIClientProvider().Client)
             {
 
-                HttpResponseMessage response = await client.DeleteAsync("/api/ProductTypes/4");
+                HttpResponseMessage response = await client.DeleteAsync("/api/ProductTypes/19");
 
 
                 string responseBody = await response.Content.ReadAsStringAsync();
