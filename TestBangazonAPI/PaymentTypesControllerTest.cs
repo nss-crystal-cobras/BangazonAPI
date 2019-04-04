@@ -94,8 +94,6 @@ namespace TestBangazonAPI
         [Fact]
         public async Task Test_Put_PaymentTypes()
         {
-
-
             using (var client = new APIClientProvider().Client)
             {
                 // ARRANGE
