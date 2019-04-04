@@ -36,37 +36,76 @@ namespace BangazonAPI.Controllers
         //If the query string parameter of q is provided when querying the list of customers, then any customer that has property value that matches the pattern should be returned.
 
         // GET: api/Customers
+        /*
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IEnumerable<IActionResult> Get(string include, string q)
         {
             using (SqlConnection conn = Connection)
             {
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT Id, FirstName, LastName
-                                        FROM Customer";
+
+                    
+                        if ( include == "products")
+                        {
+                       
+                        }
+                        else if ( include == "payments")
+                        {
+                            cmd.CommandText = @"SELECT FirstName, LastName, AcctNumber, Name as PaymentName
+                                            FROM Customer c
+                                            LEFT JOIN PaymentType t
+                                            ON c.id = t.CustomerId
+                                            WHERE 1 = 1";
+
+                        }
+                        else
+                        {
+                            cmd.CommandText = @"SELECT Id, FirstName, LastName
+                                            FROM Customer";
+                        }
+                        if(!string.IsNullOrWhiteSpace(q))
+                        {
+                        cmd.CommandText += @" AND
+                                            (c.FirstName LIKE @q OR 
+                                             c.LastName LIKE @q)";
+                        cmd.Parameters.Add(new SqlParameter("@q", $"%{q}%"));
+                        }
+
+                            
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    //new list to store the query return of all customers
-                    List<Customer> customers = new List<Customer>();
+                    //new dictionary to store the query return of all customer objects
+
+                    Dictionary<int, Customer> customers = new Dictionary<int, Customer>();
                     while (reader.Read())
                     {
-                        Customer customer = new Customer
+                            Customer customer = new Customer
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
-                            LastName = reader.GetString(reader.GetOrdinal("LastName"))
+                            LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                                            
                         };
-                        //add the individual instance of each customer above to the list
-                        customers.Add(customer);
+                        PaymentType paymentType = new PaymentType()
+                        {
+
+                            Name = reader.GetString(reader.GetOrdinal("PaymentName")),
+                            AcctNumber = reader.GetInt32(reader.GetOrdinal("AcctNumber"))
+
+                        };
+                            
+                            
+                        //add the individual instance of each customer above to the dictionary
+                        customers.Add(customer.Id, customer);
                     }
                     reader.Close();
-                    return Ok(customers);
+                    return customers.Values.ToList();
                 }
             }
         }
-
+        */
         // GET: api/Customers/5
         [HttpGet("{id}", Name = "GetCustomer")]
         public async Task<IActionResult> Get([FromRoute] int Id)
