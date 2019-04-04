@@ -15,5 +15,10 @@ namespace BangazonAPI.Models
         public string Name { get; set; }
         [Required]
         public int CustomerId {get; set;}
+
+        public static implicit operator List<object>(PaymentType v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
