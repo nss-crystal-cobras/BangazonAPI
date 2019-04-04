@@ -30,6 +30,8 @@ namespace BangazonAPI.Models
             
             public Computer Computer { get; set; }
 
+      
+
 
     }
 }

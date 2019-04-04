@@ -146,7 +146,7 @@ namespace BangazonAPI.Controllers
 
         // POST: api/Employees
         [HttpPost]
-        public ActionResult Post([FromBody] Employee newEmployee)
+        public IActionResult Post([FromBody] Employee newEmployee)
         {
             using (SqlConnection conn = Connection)
             {
@@ -177,9 +177,9 @@ namespace BangazonAPI.Controllers
                 conn.Open();
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO employee (firstname, lastname, departmentId, isSupervisor)
-                                             OUTPUT INSERTED.Id
-                                             VALUES (@firstname, @lastname, @departmentId, @isSupervisor)";
+                    cmd.CommandText = @"UPDATE employee 
+                                        SET FirstName = @firstname,LastName = @lastname, DepartmentId = @departmentId, IsSupervisor = @isSupervisor
+                                        WHERE Id = @id; ";
                     cmd.Parameters.Add(new SqlParameter("@firstname", newEmployee.FirstName));
                     cmd.Parameters.Add(new SqlParameter("@lastname", newEmployee.LastName));
                     cmd.Parameters.Add(new SqlParameter("@departmentId", newEmployee.DepartmentId));
