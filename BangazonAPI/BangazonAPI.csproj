@@ -11,7 +11,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
 
-   
+
   </ItemGroup>
 
 </Project>
