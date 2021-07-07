@@ -1,3 +1,4 @@
+
 using Newtonsoft.Json;
 using BangazonAPI.Models;
 using System;
@@ -127,7 +128,7 @@ namespace TestBangazonAPI
             using (HttpClient client = new APIClientProvider().Client)
             {
 
-                HttpResponseMessage response = await client.DeleteAsync("/api/ProductTypes/11");
+                HttpResponseMessage response = await client.DeleteAsync("/api/ProductTypes/19");
 
 
                 string responseBody = await response.Content.ReadAsStringAsync();

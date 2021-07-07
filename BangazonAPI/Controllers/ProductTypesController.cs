@@ -110,6 +110,7 @@ namespace BangazonAPI.Controllers
                 {
                     cmd.CommandText = @"INSERT INTO ProductType (Name)
                                         OUTPUT INSERTED.Id
+
                                         VALUES (@name)";
                     cmd.Parameters.Add(new SqlParameter("@name", productType.Name));
                    
@@ -117,6 +118,7 @@ namespace BangazonAPI.Controllers
                     int newId = (int)cmd.ExecuteScalar();
                     productType.Id = newId;
                     return CreatedAtRoute("GetProductType", new { id = newId }, productType);
+
                 }
             }
         }

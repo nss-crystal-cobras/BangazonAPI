@@ -29,7 +29,7 @@ namespace BangazonAPI.Controllers
             }
         }
         //GET: api/Employees
-        [HttpGet]
+       /* [HttpGet]
         public IActionResult Get()
         {
             using (SqlConnection conn = Connection)
@@ -85,7 +85,7 @@ namespace BangazonAPI.Controllers
                     }
                 }
             }
-        }
+        }*/
 
         // GET: api/Employees/5
         [HttpGet("{id}", Name = "GetSingleEmployee")]
